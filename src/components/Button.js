@@ -4,7 +4,7 @@ import "../App.css";
 const Button = (props) => {
   return (
     <button onClick={props.funcClick} className="Button">
-      {props.title}
+      <h6> {props.title}</h6>
     </button>
   );
 };

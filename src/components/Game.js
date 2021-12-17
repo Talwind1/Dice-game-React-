@@ -19,8 +19,9 @@ class Game extends React.Component {
   rollDice = () => {
     let dice1 = Math.ceil(Math.random() * 6);
     let dice2 = Math.ceil(Math.random() * 6);
+    if (dice1 === 6 && dice2 === 6) {
+    }
     this.setState({ dices: [dice1, dice2] }, this.updatePlayerScore);
-    console.log(dice1, dice2);
   };
 
   updatePlayerScore = () => {
@@ -38,9 +39,25 @@ class Game extends React.Component {
   hold = () => {
     this.updateTotal();
     this.cleanCurrent();
+    if (this.isWin()) {
+      alert(`Player ${this.isWin()} win the game! 
+      Press new to start again`);
+    }
     this.swichPlayers();
   };
 
+  isWin = () => {
+    const goal = this.state.points;
+    if (this.state.oneIsPlaying) {
+      if (this.state.players[0].totalScore >= goal) {
+        return 1;
+      }
+    } else if (this.state.players[1].totalScore >= goal) {
+      return 2;
+    } else {
+      return false;
+    }
+  };
   updateTotal = () => {
     const players = this.state.players;
     if (this.state.oneIsPlaying) {
@@ -92,12 +109,12 @@ class Game extends React.Component {
           total={this.state.players[0].totalScore}
         />
         <div className="buttons">
-          <Button funcClick={this.initializeState} title="➕New Game" />
+          <Button funcClick={this.initializeState} title="🆕" />
           <Dice values={this.state.dices} />
 
-          <Button funcClick={this.rollDice} title="🎲Roll Dice" />
-          <Button funcClick={this.hold} title="🔻hold" />
-          <h2>{this.state.points}</h2>
+          <Button funcClick={this.rollDice} title="🎲" />
+          <Button funcClick={this.hold} title="🖐️" />
+          <h1 className="points">{this.state.points}</h1>
         </div>
 
         <Player

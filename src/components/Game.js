@@ -86,7 +86,7 @@ class Game extends React.Component {
     return (
       <div className="Game">
         <Player
-          // active={this.state.oneIsPlaying}
+          active={this.state.oneIsPlaying}
           id="1"
           score={this.state.players[0].currentScore}
           total={this.state.players[0].totalScore}
@@ -97,10 +97,11 @@ class Game extends React.Component {
 
           <Button funcClick={this.rollDice} title="🎲Roll Dice" />
           <Button funcClick={this.hold} title="🔻hold" />
+          <h2>{this.state.points}</h2>
         </div>
 
         <Player
-          // active={!this.state.oneIsPlaying}
+          active={!this.state.oneIsPlaying}
           id="2"
           score={this.state.players[1].currentScore}
           total={this.state.players[1].totalScore}

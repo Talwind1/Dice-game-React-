@@ -1,3 +1,24 @@
+@font-face {
+  font-family: "LoungeBait";
+
+  src: url("./font/LoungeBait-JpVa.ttf");
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid #444;
+}
+
+.Button {
+  height: 110px;
+  width: 170px;
+  border: 1px solid red;
+  font-family: "LoungeBait";
+  font-size: 2rem;
+  margin: 0.5rem;
+}
 .App {
   text-align: center;
 }
@@ -10,4 +31,19 @@
 .buttons {
   display: flex;
   flex-direction: column;
+}
+
+.Dice {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Player {
+  font-family: "LoungeBait";
+  font-size: 5rem;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

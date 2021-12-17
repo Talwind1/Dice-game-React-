@@ -3,6 +3,7 @@ import "../App.css";
 import Dice from "./Dice";
 import Player from "./Player";
 import Button from "./Button";
+import Info from "./Info";
 
 class Game extends React.Component {
   state = {
@@ -40,11 +41,13 @@ class Game extends React.Component {
     this.updateTotal();
     this.cleanCurrent();
     if (this.isWin()) {
-      alert(`Player ${this.isWin()} win the game! 
-      Press new to start again`);
+      let winner = this.isWin();
+      this.setState({ winner: winner });
     }
     this.swichPlayers();
   };
+  // alert(`Player ${this.isWin()} win the game!
+  //     Press new to start again`);
 
   isWin = () => {
     const goal = this.state.points;
@@ -58,6 +61,7 @@ class Game extends React.Component {
       return false;
     }
   };
+
   updateTotal = () => {
     const players = this.state.players;
     if (this.state.oneIsPlaying) {
@@ -109,12 +113,16 @@ class Game extends React.Component {
           total={this.state.players[0].totalScore}
         />
         <div className="buttons">
+          <Info
+            start={!this.state.winner}
+            points={this.state.points}
+            winner={this.state.winner}
+          ></Info>
           <Button funcClick={this.initializeState} title="🆕" />
           <Dice values={this.state.dices} />
 
           <Button funcClick={this.rollDice} title="🎲" />
           <Button funcClick={this.hold} title="🖐️" />
-          <h1 className="points">{this.state.points}</h1>
         </div>
 
         <Player

@@ -12,7 +12,7 @@ const Info = (props) => {
       </h1>
     );
   }
-  return <div>{text}</div>;
+  return <div className="Info">{text}</div>;
 };
 export default Info;
 

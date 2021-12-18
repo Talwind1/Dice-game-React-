@@ -15,9 +15,11 @@ img {
   margin: 10%;
   border: 1px solid #444;
 }
-
+.Info {
+  font-size: 3em;
+  /* width: 30%; */
+}
 .Button {
-  background: red;
   border: 3px solid red;
   padding: 1%;
   font-family: "LoungeBait";

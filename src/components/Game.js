@@ -31,15 +31,13 @@ class Game extends React.Component {
   };
 
   initializeCurrentScore = () => {
-    {
-      const players = this.state.players;
-      if (this.state.oneIsPlaying) {
-        players[0].currentScore = 0;
-      } else {
-        players[1].currentScore = 0;
-      }
-      this.setState({ players: players });
+    const players = this.state.players;
+    if (this.state.oneIsPlaying) {
+      players[0].currentScore = 0;
+    } else {
+      players[1].currentScore = 0;
     }
+    this.setState({ players: players });
   };
 
   updatePlayerScore = () => {

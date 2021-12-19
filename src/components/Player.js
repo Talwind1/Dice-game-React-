@@ -3,7 +3,7 @@ import React from "react";
 import "./Player.css";
 const Player = (props) => {
   let active = props.active;
-  let backColor = active ? "rgb(198, 243, 247)" : "white";
+  let backColor = active ? "#E0EAFC" : "white";
   return (
     <div style={{ backgroundColor: backColor }}>
       <div id={props.id} className="Player">

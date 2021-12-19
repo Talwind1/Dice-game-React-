@@ -7,7 +7,7 @@ const Info = (props) => {
     text = <h1>{props.points}</h1>;
   } else {
     text = (
-      <h1 style={{ backgroundColor: "rgb(22,224,241)" }}>
+      <h1 style={{ backgroundColor: "#c0392b" }}>
         Player {`${props.winner}`} win the game!
       </h1>
     );

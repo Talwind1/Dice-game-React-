@@ -8,7 +8,7 @@ import Info from "./Info";
 class Game extends React.Component {
   state = {
     dices: [null, null],
-    points: 40,
+    points: 21,
     players: [
       { currentScore: 0, totalScore: 0 },
       { currentScore: 0, totalScore: 0 },

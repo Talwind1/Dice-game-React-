@@ -8,7 +8,7 @@ import Info from "./Info";
 class Game extends React.Component {
   state = {
     dices: [null, null],
-    points: 20,
+    points: 40,
     players: [
       { currentScore: 0, totalScore: 0 },
       { currentScore: 0, totalScore: 0 },
@@ -20,9 +20,26 @@ class Game extends React.Component {
   rollDice = () => {
     let dice1 = Math.ceil(Math.random() * 6);
     let dice2 = Math.ceil(Math.random() * 6);
-    if (dice1 === 6 && dice2 === 6) {
+    this.setState({ dices: [dice1, dice2] }, () => {
+      if (dice1 === 6 && dice2 === 6) {
+        this.initializeCurrentScore();
+        this.swichPlayers();
+      } else {
+        this.updatePlayerScore();
+      }
+    });
+  };
+
+  initializeCurrentScore = () => {
+    {
+      const players = this.state.players;
+      if (this.state.oneIsPlaying) {
+        players[0].currentScore = 0;
+      } else {
+        players[1].currentScore = 0;
+      }
+      this.setState({ players: players });
     }
-    this.setState({ dices: [dice1, dice2] }, this.updatePlayerScore);
   };
 
   updatePlayerScore = () => {
@@ -44,10 +61,9 @@ class Game extends React.Component {
       let winner = this.isWin();
       this.setState({ winner: winner });
     }
+
     this.swichPlayers();
   };
-  // alert(`Player ${this.isWin()} win the game!
-  //     Press new to start again`);
 
   isWin = () => {
     const goal = this.state.points;
@@ -71,7 +87,7 @@ class Game extends React.Component {
       let value = this.state.players[1].currentScore;
       players[1].totalScore += value;
     }
-    this.setState({ players: players });
+    this.setState({ players });
   };
 
   cleanCurrent = () => {
@@ -118,11 +134,11 @@ class Game extends React.Component {
             points={this.state.points}
             winner={this.state.winner}
           ></Info>
-          <Button funcClick={this.initializeState} title="🆕" />
+          <Button funcClick={this.initializeState} title="🆕" disable={false} />
           <Dice values={this.state.dices} />
 
-          <Button funcClick={this.rollDice} title="🎲" />
-          <Button funcClick={this.hold} title="🖐️" />
+          <Button funcClick={this.rollDice} title="🎲" disable={true} />
+          <Button funcClick={this.hold} title="🖐️" disable={false} />
         </div>
 
         <Player

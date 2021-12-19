@@ -20,7 +20,7 @@ img {
   /* width: 30%; */
 }
 .Button {
-  border: 3px solid red;
+  border: 3px solid rgb(211, 33, 45);
   padding: 1%;
   font-family: "LoungeBait";
   font-size: 4vw;
@@ -60,4 +60,5 @@ img {
 }
 .buttons .points {
   font-size: 3em;
+  background-color: rgb(132, 226, 235);
 }

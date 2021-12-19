@@ -3,7 +3,7 @@ import React from "react";
 import "./Player.css";
 const Player = (props) => {
   let active = props.active;
-  let backColor = active ? "rgb(189, 184, 184)" : "white";
+  let backColor = active ? "rgb(198, 243, 247)" : "white";
   return (
     <div style={{ backgroundColor: backColor }}>
       <div id={props.id} className="Player">
@@ -21,3 +21,4 @@ const Player = (props) => {
   );
 };
 export default Player;
+// "rgb(189, 184, 184)"
